@@ -13,5 +13,24 @@ pipeline {
                 echo "ENV: ${params.ENV}"
             }
         }
-    }
-}
+        stage('scanes'){
+            parallel{
+            stage('sonar'){
+                steps{
+                    echo "sonar is executing"
+                    sleep 10
+                }
+            }stage('docker'){
+                steps{
+                    echo "docker is executing"
+                    sleep 10 
+                }
+            }stage('amazon'){
+                steps{
+                    echo "amazon is launching"
+                    sleep 10
+                }
+            }
+            }
+        }
+   }
